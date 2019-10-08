@@ -16,10 +16,16 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+static const char col_white[]       = "#F3F4F5";
+static const char col_blue[]        = "#1C1F25";
+static const char col_purple[]      = "#BD93F9";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_gray3, col_blue, col_gray2 },
+	//[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	//[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]  = { col_gray4, col_purple,  col_purple  },
 };
 
 /* tagging */
@@ -64,15 +70,15 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run_history", "-m", dmenumon, "-fn", dmenufont, "-nb", col_blue, "-nf", col_white, "-sb", col_purple, "-sf", col_white, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *vol_up[] = {"volume", "inc", NULL};
-static const char *vol_down[] = {"volume", "dec", NULL};
-static const char *vol_mute[] = {"volume", "off", NULL};
-static const char *keyboard_back_up[] = {"keyboard_backlight", "inc", NULL};
-static const char *keyboard_back_down[] = {"keyboard_backlight", "dec", NULL};
-static const char *screen_back_up[] = {"screen_backlight", "inc", NULL};
-static const char *screen_back_down[] = {"screen_backlight", "dec", NULL};
+static const char *vol_up[] = {"amixer", "-q", "sset", "Master", "unmute","5%+", NULL};
+static const char *vol_down[] = {"amixer", "-q", "sset", "Master","unmute","5%-", NULL};
+static const char *vol_mute[] = {"amixer", "-q", "sset", "Master", "toggle", NULL};
+static const char *keyboard_back_up[] = {"light", "-Ars", "sysfs/leds/smc::kbd_backlight", "25", NULL};
+static const char *keyboard_back_down[] = {"light", "-Urs", "sysfs/leds/smc::kbd_backlight", "25", NULL};
+static const char *screen_back_up[] = {"xbacklight", "-inc", "10", NULL};
+static const char *screen_back_down[] = {"xbacklight", "-dec", "10", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -111,13 +117,13 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = vol_up } },
-	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = vol_down } },
-	{ 0,                            XF86XK_AudioMute,    spawn,           {.v = vol_mute } },
-  { 0,                            XF86XK_KbdBrightnessUp, spawn,        {.v = keyboard_back_up } },
-  { 0,                            XF86XK_KbdBrightnessDown, spawn,      {.v = keyboard_back_down } },
-  { 0,                            XF86XK_MonBrightnessUp, spawn,        {.v = screen_back_up} },
-  { 0,                            XF86XK_MonBrightnessDown, spawn,      {.v = screen_back_down} },
+	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = vol_up }              },
+	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = vol_down }            },
+	{ 0,                            XF86XK_AudioMute,           spawn,          {.v = vol_mute }            },
+  { 0,                            XF86XK_KbdBrightnessUp,     spawn,          {.v = keyboard_back_up }    },
+  { 0,                            XF86XK_KbdBrightnessDown,   spawn,          {.v = keyboard_back_down }  },
+  { 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = screen_back_up}       },
+  { 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = screen_back_down}     },
 };
 
 /* button definitions */
