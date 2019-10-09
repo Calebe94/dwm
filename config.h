@@ -30,7 +30,7 @@ static const char *colors[][3]      = {
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tagsalt[] = { "", "", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tagsalt[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -80,7 +80,7 @@ static const char *keyboard_back_up[] = {"light", "-Ars", "sysfs/leds/smc::kbd_b
 static const char *keyboard_back_down[] = {"light", "-Urs", "sysfs/leds/smc::kbd_backlight", "25", NULL};
 static const char *screen_back_up[] = {"xbacklight", "-inc", "10", NULL};
 static const char *screen_back_down[] = {"xbacklight", "-dec", "10", NULL};
-
+static const char *menu_command[] = {"pymenu", NULL};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -126,6 +126,8 @@ static Key keys[] = {
   { 0,                            XF86XK_KbdBrightnessDown,   spawn,          {.v = keyboard_back_down }  },
   { 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = screen_back_up}       },
   { 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = screen_back_down}     },
+//  { 0,                            XF86XK_LaunchA,             spawn,          {.v = menu_command}         },
+  { 0,                            XF86XK_LaunchB,             spawn,          {.v = menu_command}         },
 };
 
 /* button definitions */
