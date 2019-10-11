@@ -23,8 +23,6 @@ static const char col_purple[]      = "#BD93F9";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_blue, col_gray2 },
-	//[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	//[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 	[SchemeSel]  = { col_gray4, col_purple,  col_purple  },
 };
 
@@ -58,19 +56,23 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY  Mod4Mask
+#define MODKEY2 ControlMask
+
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
+	{ MODKEY2,                      KEY,      view,           {.ui = 1 << TAG} }, \
+	{ MODKEY2|ShiftMask,            KEY,      tag,            {.ui = 1 << TAG} }, 
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run_history", "-m", dmenumon, "-fn", dmenufont, "-nb", col_blue, "-nf", col_white, "-sb", col_purple, "-sf", col_white, NULL };
+static const char *dmenucmd[] = { "dmenu_run_history", "-p", "run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_blue, "-nf", col_white, "-sb", col_purple, "-sf", col_white, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *vol_up[] = {"amixer", "-q", "sset", "Master", "unmute","5%+", NULL};
 static const char *vol_down[] = {"amixer", "-q", "sset", "Master","unmute","5%-", NULL};
@@ -79,21 +81,24 @@ static const char *keyboard_back_up[] = {"light", "-Ars", "sysfs/leds/smc::kbd_b
 static const char *keyboard_back_down[] = {"light", "-Urs", "sysfs/leds/smc::kbd_backlight", "25", NULL};
 static const char *screen_back_up[] = {"xbacklight", "-inc", "10", NULL};
 static const char *screen_back_down[] = {"xbacklight", "-dec", "10", NULL};
+static const char *show_menu[] = {"pymenu", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd }  },
+	{ MODKEY2,                      XK_Return, spawn,          {.v = termcmd }  },
+	{ MODKEY,                       XK_b,      togglebar,      {0}              },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_f,      zoom,           {0} }, // Focus
+	{ MODKEY2|ShiftMask,            XK_f,      zoom,           {0} }, // Focus
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+//	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -124,6 +129,11 @@ static Key keys[] = {
   { 0,                            XF86XK_KbdBrightnessDown,   spawn,          {.v = keyboard_back_down }  },
   { 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = screen_back_up}       },
   { 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = screen_back_down}     },
+  { 0,                            XF86XK_LaunchB,             spawn,          {.v = show_menu}            },
+	{ MODKEY,                       XK_q,                       killclient,     {0}                         },
+	{ MODKEY2,                      XK_q,                       killclient,     {0}                         },
+	{ MODKEY2,                     XK_space,                    spawn,          {0}                         },
+	{ MODKEY2|ShiftMask,           XK_space,                    spawn,          {0} },
 };
 
 /* button definitions */
