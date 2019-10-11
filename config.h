@@ -82,6 +82,7 @@ static const char *keyboard_back_down[] = {"light", "-Urs", "sysfs/leds/smc::kbd
 static const char *screen_back_up[] = {"xbacklight", "-inc", "10", NULL};
 static const char *screen_back_down[] = {"xbacklight", "-dec", "10", NULL};
 static const char *show_menu[] = {"pymenu", NULL};
+static const char *start_dwm[] = {"dwm", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -121,7 +122,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,                       quit,           {0}                         },
+	{ MODKEY2|ShiftMask,            XK_r,                       restart,        {.v = start_dwm}            },
 	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = vol_up }              },
 	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = vol_down }            },
 	{ 0,                            XF86XK_AudioMute,           spawn,          {.v = vol_mute }            },
