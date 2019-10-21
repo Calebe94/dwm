@@ -56,8 +56,11 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY  Mod4Mask
-#define MODKEY2 ControlMask
+//#define MODKEY  Mod4Mask
+//#define MODKEY2 ControlMask
+#define MODKEY  ControlMask
+#define MODKEY2 Mod4Mask
+
 
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -105,8 +108,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
   { MODKEY,                       XK_s,      setlayout,      {.v = &layouts[3]} },
   { MODKEY,                       XK_g,      setlayout,      {.v = &layouts[5]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY2,                      XK_space,  setlayout,      {0} },
+	{ MODKEY2|ShiftMask,            XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -134,8 +137,8 @@ static Key keys[] = {
   { 0,                            XF86XK_LaunchB,             spawn,          {.v = show_menu}            },
 	{ MODKEY,                       XK_q,                       killclient,     {0}                         },
 	{ MODKEY2,                      XK_q,                       killclient,     {0}                         },
-	{ MODKEY2,                     XK_space,                    spawn,          {0}                         },
-	{ MODKEY2|ShiftMask,           XK_space,                    spawn,          {0} },
+	{ MODKEY,                       XK_space,                   spawn,          {.v = show_menu }           },
+	{ MODKEY|ShiftMask,             XK_space,                   spawn,          {.v = dmenucmd  }           },
 };
 
 /* button definitions */
