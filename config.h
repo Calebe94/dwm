@@ -56,8 +56,11 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY  Mod4Mask
-#define MODKEY2 ControlMask
+//#define MODKEY  Mod4Mask
+//#define MODKEY2 ControlMask
+#define MODKEY  ControlMask
+#define MODKEY2 Mod4Mask
+
 
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -82,6 +85,7 @@ static const char *keyboard_back_down[] = {"light", "-Urs", "sysfs/leds/smc::kbd
 static const char *screen_back_up[] = {"xbacklight", "-inc", "10", NULL};
 static const char *screen_back_down[] = {"xbacklight", "-dec", "10", NULL};
 static const char *show_menu[] = {"pymenu", NULL};
+static const char *start_dwm[] = {"dwm", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -104,8 +108,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
   { MODKEY,                       XK_s,      setlayout,      {.v = &layouts[3]} },
   { MODKEY,                       XK_g,      setlayout,      {.v = &layouts[5]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY2,                      XK_space,  setlayout,      {0} },
+	{ MODKEY2|ShiftMask,            XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -121,7 +125,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,                       quit,           {0}                         },
+	{ MODKEY2|ShiftMask,            XK_r,                       restart,        {.v = start_dwm}            },
 	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = vol_up }              },
 	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = vol_down }            },
 	{ 0,                            XF86XK_AudioMute,           spawn,          {.v = vol_mute }            },
@@ -132,8 +137,8 @@ static Key keys[] = {
   { 0,                            XF86XK_LaunchB,             spawn,          {.v = show_menu}            },
 	{ MODKEY,                       XK_q,                       killclient,     {0}                         },
 	{ MODKEY2,                      XK_q,                       killclient,     {0}                         },
-	{ MODKEY2,                     XK_space,                    spawn,          {0}                         },
-	{ MODKEY2|ShiftMask,           XK_space,                    spawn,          {0} },
+	{ MODKEY,                       XK_space,                   spawn,          {.v = show_menu }           },
+	{ MODKEY|ShiftMask,             XK_space,                   spawn,          {.v = dmenucmd  }           },
 };
 
 /* button definitions */
