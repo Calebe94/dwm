@@ -76,6 +76,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run_history", "-p", "run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_blue, "-nf", col_white, "-sb", col_purple, "-sf", col_white, NULL };
+static const char *flameshotcmd[] = { "flameshot", "gui", "-p", "/home/calebe94/Pictures/Screenshots", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *vol_up[] = {"amixer", "-q", "sset", "Master", "unmute","5%+", NULL};
 static const char *vol_down[] = {"amixer", "-q", "sset", "Master","unmute","5%-", NULL};
@@ -89,7 +90,7 @@ static const char *start_dwm[] = {"dwm", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = flameshotcmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd }  },
 	{ MODKEY2,                      XK_Return, spawn,          {.v = termcmd }  },
 	{ MODKEY,                       XK_b,      togglebar,      {0}              },
