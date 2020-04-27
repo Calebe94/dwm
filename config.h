@@ -88,6 +88,9 @@ static const char *screen_back_up[] = {"xbacklight", "-inc", "10", NULL};
 static const char *screen_back_down[] = {"xbacklight", "-dec", "10", NULL};
 static const char *show_menu[] = {"pymenu", NULL};
 static const char *start_dwm[] = {"dwm", NULL};
+static const char *spotify_play_pause[] = {"spotifycli", "--playpause", NULL};
+static const char *spotify_previous[] = {"spotifycli", "--prev", NULL};
+static const char *spotify_next[] = {"spotifycli", "--next", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -136,6 +139,9 @@ static Key keys[] = {
   { 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = screen_back_up}       },
   { 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = screen_back_down}     },
   { 0,                            XF86XK_LaunchB,             spawn,          {.v = show_menu}            },
+  { 0,                            XF86XK_AudioPrev,           spawn,          {.v = spotify_previous}     },
+  { 0,                            XF86XK_AudioPlay,           spawn,          {.v = spotify_play_pause}   },
+  { 0,                            XF86XK_AudioNext,           spawn,          {.v = spotify_next}         },
 	{ MODKEY,                       XK_q,                       killclient,     {0}                         },
 	{ MODKEY2,                      XK_q,                       killclient,     {0}                         },
 	{ MODKEY,                       XK_space,                   spawn,          {.v = show_menu }           },
