@@ -36,7 +36,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	//{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -87,6 +87,7 @@ static const char *keyboard_back_down[] = {"light", "-Urs", "sysfs/leds/smc::kbd
 static const char *screen_back_up[] = {"xbacklight", "-inc", "10", NULL};
 static const char *screen_back_down[] = {"xbacklight", "-dec", "10", NULL};
 static const char *show_menu[] = {"pymenu", NULL};
+static const char *show_dmenu_history[] = {"dmenu_run_history", "-p", "run", NULL};
 static const char *start_dwm[] = {"dwm", NULL};
 static const char *spotify_play_pause[] = {"spotifycli", "--playpause", NULL};
 static const char *spotify_previous[] = {"spotifycli", "--prev", NULL};
@@ -139,6 +140,7 @@ static Key keys[] = {
   { 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = screen_back_up}       },
   { 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = screen_back_down}     },
   { 0,                            XF86XK_LaunchB,             spawn,          {.v = show_menu}            },
+  { 0,                            XF86XK_LaunchA,             spawn,          {.v = show_dmenu_history }  },
   { 0,                            XF86XK_AudioPrev,           spawn,          {.v = spotify_previous}     },
   { 0,                            XF86XK_AudioPlay,           spawn,          {.v = spotify_play_pause}   },
   { 0,                            XF86XK_AudioNext,           spawn,          {.v = spotify_next}         },
@@ -156,7 +158,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+	{ ClkClientWin,         MODKEY2,        Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },

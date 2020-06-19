@@ -1,0 +1,68 @@
+Trying location provider `geoclue2'...
+Using provider `geoclue2'.
+Using method `randr'.
+Waiting for initial location to become available...
+Location: 25.51 S, 49.29 W
+sh: 1: ./autostart_blocking.sh: not found
+Trying location provider `geoclue2'...
+Using provider `geoclue2'.
+Using method `randr'.
+Waiting for initial location to become available...
+conky: desktop window (17e) is root window
+conky: window type - override
+conky: drawing to created window (0x4400002)
+conky: drawing to double buffer
+conky: desktop window (17e) is root window
+conky: window type - override
+conky: drawing to created window (0x2800002)
+conky: drawing to double buffer
+conky: desktop window (17e) is root window
+conky: window type - override
+conky: drawing to created window (0x4200002)
+conky: drawing to double buffer
+Location: 25.49 S, 49.29 W
+** Message: 09:16:06.589: main.vala:40: lxpolkit is already running. Existing
+conky: desktop window (17e) is root window
+conky: window type - override
+conky: drawing to created window (0x2a00002)
+conky: drawing to double buffer
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  8517  100  8517    0     0  16865      0 --:--:-- --:--:-- --:--:-- 16865
+conky: received SIGINT or SIGTERM to terminate. bye!
+conky: received SIGINT or SIGTERM to terminate. bye!
+conky: received SIGINT or SIGTERM to terminate. bye!
+conky: received SIGINT or SIGTERM to terminate. bye!
+sh: 1: ./autostart_blocking.sh: not found
+Trying location provider `geoclue2'...
+Using provider `geoclue2'.
+Using method `randr'.
+Waiting for initial location to become available...
+** Message: 09:16:11.182: main.vala:40: lxpolkit is already running. Existing
+X Error of failed request:  BadWindow (invalid Window parameter)
+  Major opcode of failed request:  3 (X_GetWindowAttributes)
+  Resource id in failed request:  0x2e00001
+  Serial number of failed request:  163
+  Current serial number in output stream:  164
+X Error of failed request:  BadWindow (invalid Window parameter)
+  Major opcode of failed request:  20 (X_GetProperty)
+  Resource id in failed request:  0x2e00001
+  Serial number of failed request:  77
+  Current serial number in output stream:  77
+X Error of failed request:  BadWindow (invalid Window parameter)
+  Major opcode of failed request:  3 (X_GetWindowAttributes)
+  Resource id in failed request:  0x2e00001
+  Serial number of failed request:  163
+  Current serial number in output stream:  164
+X Error of failed request:  BadWindow (invalid Window parameter)
+  Major opcode of failed request:  3 (X_GetWindowAttributes)
+  Resource id in failed request:  0x2e00001
+  Serial number of failed request:  163
+  Current serial number in output stream:  164
+Location: 25.49 S, 49.29 W
+Show Confirm 'confirm'
+Submenu Error 'submenu'
+Sandbox: seccomp sandbox violation: pid 718955, tid 718955, syscall 315, args 718955 140042298111424 56 0 40 140042298111424.
+Sandbox: seccomp sandbox violation: pid 719006, tid 719006, syscall 315, args 719006 140228641915648 56 0 49 140228641915648.
+Sandbox: seccomp sandbox violation: pid 719069, tid 719069, syscall 315, args 719069 139910260863488 56 0 53 139910260863488.
+[Parent 718874, Gecko_IOThread] WARNING: pipe error (58): Connection reset by peer: file /build/firefox-esr-kioUND/firefox-esr-68.9.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 358
