@@ -5,8 +5,8 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
+static const unsigned int snap      = 0;        /* snap pixel */
+static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 //static const char *fonts[]          = { "monospace:size=12" };
 static const char *fonts[]          = { "San Francisco Display:size=12" };
@@ -140,9 +140,6 @@ static Key keys[] = {
   { 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = screen_back_down}     },
   { 0,                            XF86XK_LaunchB,             spawn,          {.v = show_menu}            },
   { 0,                            XF86XK_LaunchA,             spawn,          {.v = show_dmenu_history }  },
-  //{ 0,                            XF86XK_AudioPrev,           spawn,          {.v = spotify_previous}     },
-  //{ 0,                            XF86XK_AudioPlay,           spawn,          {.v = spotify_play_pause}   },
-  //{ 0,                            XF86XK_AudioNext,           spawn,          {.v = spotify_next}         },
 	{ MODKEY,                       XK_q,                       killclient,     {0}                         },
 	{ MODKEY2,                      XK_q,                       killclient,     {0}                         },
 	{ MODKEY,                       XK_space,                   spawn,          {.v = show_menu }           },
@@ -157,7 +154,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
-	{ ClkClientWin,         MODKEY2,        Button1,        movemouse,      {0} },
+	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
