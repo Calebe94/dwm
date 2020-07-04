@@ -93,9 +93,6 @@ static const char *screen_back_down[] = {"xbacklight", "-dec", "10", NULL};
 static const char *show_menu[] = {"pymenu", NULL};
 static const char *show_dmenu_history[] = {"dmenu_run_history", "-p", "run", NULL};
 static const char *start_dwm[] = {"dwm", NULL};
-static const char *spotify_play_pause[] = {"spotifycli", "--playpause", NULL};
-static const char *spotify_previous[] = {"spotifycli", "--prev", NULL};
-static const char *spotify_next[] = {"spotifycli", "--next", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
