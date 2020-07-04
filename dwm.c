@@ -193,7 +193,6 @@ static Client *nexttiled(Client *c);
 static void pop(Client *);
 static void propertynotify(XEvent *e);
 static void quit(const Arg *arg);
-static void restart(const Arg *arg);
 static Monitor *recttomon(int x, int y, int w, int h);
 static void resize(Client *c, int x, int y, int w, int h, int interact);
 static void resizeclient(Client *c, int x, int y, int w, int h);
@@ -1315,13 +1314,6 @@ void
 quit(const Arg *arg)
 {
 	running = 0;
-}
-
-void
-restart(const Arg *arg)
-{
-  quit(arg);
-  spawn(arg);
 }
 
 Monitor *
