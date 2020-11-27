@@ -62,15 +62,17 @@ static const Layout layouts[] = {
 /* key definitions */
 //#define MODKEY  Mod4Mask
 //#define MODKEY2 ControlMask
-#define MODKEY  ControlMask
-#define MODKEY2 Mod4Mask
+
+//#define MODKEY  ControlMask
+//#define MODKEY2 Mod4Mask
+#define MODKEY Mod4Mask
 
 
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY2,                      KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY2|ShiftMask,            KEY,      tag,            {.ui = 1 << TAG} },
+	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} },
+	//{ MODKEY2,                      KEY,      view,           {.ui = 1 << TAG} }, \
+	//{ MODKEY2|ShiftMask,            KEY,      tag,            {.ui = 1 << TAG} },
 	/*{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, */
 
@@ -97,15 +99,13 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = flameshotcmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd }  },
-	{ MODKEY2,                      XK_Return, spawn,          {.v = termcmd }  },
 	{ MODKEY,                       XK_b,      togglebar,      {0}              },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	//{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY2|ShiftMask,            XK_f,      zoom,           {0} }, // Focus
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 //	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -113,8 +113,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
 //  { MODKEY,                       XK_s,      setlayout,      {.v = &layouts[3]} },
   { MODKEY,                       XK_g,      setlayout,      {.v = &layouts[5]} },
-	{ MODKEY2,                      XK_space,  setlayout,      {0} },
-	{ MODKEY2|ShiftMask,            XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -141,7 +139,6 @@ static Key keys[] = {
   { 0,                            XF86XK_LaunchB,             spawn,          {.v = show_menu}            },
   { 0,                            XF86XK_LaunchA,             spawn,          {.v = show_dmenu_history }  },
 	{ MODKEY,                       XK_q,                       killclient,     {0}                         },
-	{ MODKEY2,                      XK_q,                       killclient,     {0}                         },
 	{ MODKEY,                       XK_space,                   spawn,          {.v = show_menu }           },
 	{ MODKEY|ShiftMask,             XK_space,                   spawn,          {.v = dmenucmd  }           },
 };
