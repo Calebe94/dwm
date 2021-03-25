@@ -161,3 +161,4 @@ static Button buttons[] = {
 	{ClkTagBar, MODKEY, Button1, tag, {0}},
 	{ClkTagBar, MODKEY, Button3, toggletag, {0}},
 };
+
