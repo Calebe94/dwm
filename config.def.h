@@ -107,13 +107,12 @@ static Key keys[] = {
 	{MODKEY, XK_l, setmfact, {.f = +0.05}},
 	{MODKEY | ShiftMask, XK_f, zoom, {0}}, // Focus
 	{MODKEY, XK_Tab, view, {0}},
-	//	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{MODKEY | ShiftMask, XK_t, setlayout, {.v = &layouts[0]}},
-	{MODKEY | ShiftMask, XK_f, setlayout, {.v = &layouts[1]}},
-	{MODKEY | ShiftMask, XK_m, setlayout, {.v = &layouts[2]}},
-	//  { MODKEY,                       XK_s,      setlayout,      {.v = &layouts[3]} },
-	{MODKEY, XK_g, setlayout, {.v = &layouts[5]}},
-	//{ MODKEY,                      XK_space,  setlayout,      {0} },
+	{MODKEY2 | ShiftMask, XK_1, setlayout, {.v = &layouts[0]}},
+	{MODKEY2 | ShiftMask, XK_2, setlayout, {.v = &layouts[1]}},
+	{MODKEY2 | ShiftMask, XK_3, setlayout, {.v = &layouts[2]}},
+	{MODKEY2 | ShiftMask, XK_4, setlayout, {.v = &layouts[3]}},
+	{MODKEY2 | ShiftMask, XK_5, setlayout, {.v = &layouts[4]}},
+	{MODKEY2 | ShiftMask, XK_6, setlayout, {.v = &layouts[5]}},
 	{MODKEY | ShiftMask, XK_space, togglefloating, {0}},
 	{MODKEY, XK_0, view, {.ui = ~0}},
 	{MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
@@ -122,14 +121,15 @@ static Key keys[] = {
 	{MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
 	{MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
 	TAGKEYS(XK_1, 0)
-		TAGKEYS(XK_2, 1)
-			TAGKEYS(XK_3, 2)
-				TAGKEYS(XK_4, 3)
-					TAGKEYS(XK_5, 4)
-						TAGKEYS(XK_6, 5)
-							TAGKEYS(XK_7, 6)
-								TAGKEYS(XK_8, 7)
-									TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
+	TAGKEYS(XK_2, 1)
+	TAGKEYS(XK_3, 2)
+	TAGKEYS(XK_4, 3)
+	TAGKEYS(XK_5, 4)
+    TAGKEYS(XK_6, 5)
+    TAGKEYS(XK_7, 6)
+    TAGKEYS(XK_8, 7)
+    TAGKEYS(XK_9, 8)
+    {MODKEY | ShiftMask, XK_q, quit, {0}},
 	{0, XF86XK_AudioRaiseVolume, spawn, {.v = vol_up}},
 	{0, XF86XK_AudioLowerVolume, spawn, {.v = vol_down}},
 	{0, XF86XK_AudioMute, spawn, {.v = vol_mute}},
@@ -142,7 +142,6 @@ static Key keys[] = {
 	{0, XF86XK_AudioPlay, spawn, {.v = play_pause_media}},
 	{0, XF86XK_AudioNext, spawn, {.v = next_media}},
 	{0, XF86XK_AudioPrev, spawn, {.v = prev_media}},
-	{MODKEY, XK_q, killclient, {0}},
 	{MODKEY, XK_q, killclient, {0}},
 	{MODKEY, XK_space, spawn, {.v = show_menu}},
 	{MODKEY2 | ShiftMask, XK_space, spawn, {.v = dmenucmd}},
